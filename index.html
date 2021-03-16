@@ -37,17 +37,34 @@
             </select>
             <br>
 
-            <label for='js-state'>Choose a state (optional):</label>
-            <input type='text' id='js-state' name='state' placeholder='TX' maxlength='2' size='3'>
+            <label for='js-state'>Choose a state:</label>
+            <input type='text' id='js-state' name='state' placeholder='TX' maxlength='2' size='3' required>
             <br>
             <input type="submit" value="Find Parks!">
         </form>
+            <br>
+            <br>
+        <form id='weather-form' class='hidden'>
+            <input type='text' id='js-latitude' name='latitude' placeholder='latitude'>
+            <br>
+            <input type='text' id='js-longitude' name='longitude' placeholder='longitude'>
+            <input type='submit' class='js-get-weather' value='Get Weather Forecast'>
+        </form>
+        
+    </div>
+
+    <!--Div container for weather forecast-->
+    <div class='weather-results'>
+        <h2 id='js-weather-location'></h2>
+        <div id='js-weather-list'>
+        </div>
     </div>
 
     <!-- Div container for list of search results/parks-->
     <div class='park-results'>
         <section id='park-section'>
-            <ul id='results-list'>
+            <h2 id='results-count'></h2>
+            <ul class='results-list'>
 
             </ul>
         </section>
