@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Parks Activity Search</title>
+    <link rel='stylesheet' href='main.css'>
+</head>
+<body>
+    <!--Search form that always stays at top of page-->
+    <div class='form-container'>
+        <h1>National Park Activity Search</h1>
+        <p>Find which US national parks support your favorite outdoor activities</p>
+        <form id='js-forms'>
+            <label for='js-activities'>Choose an activity:</label>
+            <select id='js-activities' name='activities' required>
+                <option value="auto and atv">Auto and ATV</option>
+                <option value="biking">Biking</option>
+                <option value="birdwatching">Birdwatching</option>
+                <option value="boating">Boating</option>
+                <option value="camping">Camping</option>
+                <option value="canoeing">Canoeing</option>
+                <option value="fishing">Fishing</option>
+                <option value="geology">Geology</option>
+                <option value="guided">Guided Tours</option>
+                <option value="hiking">Hiking</option>
+                <option value="hunting">Hunting</option>
+                <option value="kayaking">Kayaking</option>
+                <option value="paddling">Paddling</option>
+                <option value="rv camping">RV Camping</option>
+                <option value="scenic driving">Scenic Driving</option>
+                <option value="scuba diving">Scuba Diving</option>
+                <option value="stargazing">Stargazing</option>
+                <option value="swimming">Swimming</option>
+                <option value="wildlife watching">Wildlife Watching</option>
+            </select>
+            <br>
+
+            <label for='js-state'>Choose a state (optional):</label>
+            <input type='text' id='js-state' name='state' placeholder='TX' maxlength='2' size='3'>
+            <br>
+            <input type="submit" value="Find Parks!">
+        </form>
+    </div>
+
+    <!-- Div container for list of search results/parks-->
+    <div class='park-results'>
+        <section id='park-section'>
+            <ul id='results-list'>
+
+            </ul>
+        </section>
+
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</body>
+</html>
