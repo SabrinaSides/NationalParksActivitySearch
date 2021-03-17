@@ -43,3 +43,8 @@ ul{
     align-items: center;
     margin: auto;
 }
+
+.weather-img{
+    width: 95%;
+    height: 95%;
+}
