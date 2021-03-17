@@ -11,9 +11,6 @@ const dailyForecast = 'http://dataservice.accuweather.com/forecasts/v1/daily/1da
 const weatherLocation = 'http://dataservice.accuweather.com/locations/v1/cities/geoposition/search';
 const accuweatherKey = '9I5je7q85bu9l4krJjNWfcqTVDgLC67H';
 
-let store = [];
-const locationKey = [];
-
 
 //function to create search string to add to baseURL
 function formatQueryParams(params){
@@ -22,7 +19,18 @@ function formatQueryParams(params){
     return queryJoined;
 }
 
-//call locationKey API
+//used to store lat/long coordinates needed as query parameter in getLocationKey function
+let store = [];
+
+//push lat/long value (from NP API results) to store variable
+function weatherDropDownClicked(){
+    store = [];
+    const selected = $("#js-weather-dropdown :selected").val();
+    store.push(selected);
+    let stringCoord = store.toString();
+}
+
+//call locationKey API--> get accuweather function nested inside (because it requires value from locationKey API)
 function getLocationKey(store){
     const params = {
         apikey: accuweatherKey,
@@ -43,12 +51,12 @@ function getLocationKey(store){
 }
 
 //call daily forecast API
-function getAccuweather(locationKey){
+function getAccuweather(location){
     const params = {
         apikey: accuweatherKey,
     };
     const queryString = formatQueryParams(params);
-    const weatherSearchUrl = dailyForecast + locationKey + '?' + queryString;
+    const weatherSearchUrl = dailyForecast + location + '?' + queryString;
 
     fetch(weatherSearchUrl)
         .then(response => {
@@ -65,7 +73,7 @@ function getAccuweather(locationKey){
 function displayWeather(responseJson){
     $('.weather-results').empty();
     $('.weather-results').append(
-        `<h2>Today's Park Weather Forecast:</h2>`);
+        `<h2>Today's Park Weather Forecast:</h2><br>`);
     for(let i = 0; i < responseJson.DailyForecasts.length; i++){
         $('.weather-results').append(`
             <section>
@@ -74,6 +82,7 @@ function displayWeather(responseJson){
                     <div><h4> Max Temp: ${responseJson.DailyForecasts[i].Temperature.Maximum.Value}&deg F</h4></div>
                     <div><h4> Min Temp: ${responseJson.DailyForecasts[i].Temperature.Minimum.Value}&deg F</h4></div>
                     <div><h4> Conditions: ${responseJson.DailyForecasts[i].Day.IconPhrase}</h4></div>
+                    <div><a href='${responseJson.Headline.Link}' target='_blank'>More weather details available at Accuweather</a></div>
                 </div>
             </section>
         `)};
@@ -112,9 +121,9 @@ function displayResults(responseJson){
             $('.results-list').append(
             `<li class='js-result-li'>
             <h2>${responseJson.data[i].fullName}</h2>
-            <h4>Park Coordinates: ${responseJson.data[i].latitude}, ${responseJson.data[i].longitude}</h3>
             <img src='${responseJson.data[i].images[0].url}' alt='Park-image'>
             <p>${responseJson.data[i].description}</p>
+            <p>Park Coordinates: ${responseJson.data[i].latitude}, ${responseJson.data[i].longitude}<p>
             <a href='${responseJson.data[i].url}' target='_blank'>More Park Info at NPS.gov</a>
             <hr>
             </li>`)
@@ -122,7 +131,7 @@ function displayResults(responseJson){
                 `<option value="${responseJson.data[i].latitude},${responseJson.data[i].longitude}">${responseJson.data[i].fullName}</option>`
             )
         } else{
-           $('#results-list').append(`<li>Sorry, this state doesn't have any national parks that support that activity.</li>`)
+           $('#results-list').append(`<li>Sorry, this state doesn't have any national parks that support this activity.</li>`)
         }
     }
 }
@@ -143,21 +152,13 @@ function findParksClicked(){
 });
 }
 
-function weatherDropDownClicked(){
-    store = [];
-    const selected = $("#js-weather-dropdown :selected").val();
-    store.push(selected);
-    let stringCoord = store.toString();
-}
-
-//get weather button clicked **no dropdown**
+//get weather button clicked
 function getWeatherClicked(){
     $('#weather-form').submit(event => {
         event.preventDefault();
         $('.weather-results').empty();
         weatherDropDownClicked();
         getLocationKey(store);
-        getAccuweather(locationKey);
     })
 }
 
