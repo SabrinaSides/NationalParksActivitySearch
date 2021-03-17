@@ -7,8 +7,8 @@ const npBaseUrl = 'https://developer.nps.gov/api/v1/parks';
 
 
 //Accuweather API
-const dailyForecast = 'http://dataservice.accuweather.com/forecasts/v1/daily/1day/';
-const weatherLocation = 'http://dataservice.accuweather.com/locations/v1/cities/geoposition/search';
+const dailyForecast = 'https://dataservice.accuweather.com/forecasts/v1/daily/1day/';
+const weatherLocation = 'https://dataservice.accuweather.com/locations/v1/cities/geoposition/search';
 const accuweatherKey = '9I5je7q85bu9l4krJjNWfcqTVDgLC67H';
 
 
