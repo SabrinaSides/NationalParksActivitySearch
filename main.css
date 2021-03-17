@@ -10,3 +10,19 @@ img{
 .hidden{
     display: none;
 }
+
+.weather-results{
+    display: flex;
+    flex: row;
+}
+
+.coord-btn {
+    background: transparent;
+    color: blue;
+    border: none;
+    outline: 0;
+    text-decoration: underline;
+}
+.coord-btn:hover {
+    color: firebrick;
+}
