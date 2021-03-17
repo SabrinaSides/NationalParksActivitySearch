@@ -11,7 +11,7 @@ const dailyForecast = 'http://dataservice.accuweather.com/forecasts/v1/daily/1da
 const weatherLocation = 'http://dataservice.accuweather.com/locations/v1/cities/geoposition/search';
 const accuweatherKey = '9I5je7q85bu9l4krJjNWfcqTVDgLC67H';
 
-const store = [];
+let store = [];
 const locationKey = [];
 
 
@@ -69,6 +69,7 @@ function displayWeather(responseJson){
     for(let i = 0; i < responseJson.DailyForecasts.length; i++){
         $('.weather-results').append(`
             <section>
+                <br>
                 <div class='forecast'>
                     <div><h4> Max Temp: ${responseJson.DailyForecasts[i].Temperature.Maximum.Value}&deg F</h4></div>
                     <div><h4> Min Temp: ${responseJson.DailyForecasts[i].Temperature.Minimum.Value}&deg F</h4></div>
@@ -115,15 +116,13 @@ function displayResults(responseJson){
             <img src='${responseJson.data[i].images[0].url}' alt='Park-image'>
             <p>${responseJson.data[i].description}</p>
             <a href='${responseJson.data[i].url}' target='_blank'>More Park Info at NPS.gov</a>
+            <hr>
             </li>`)
             $('#js-weather-dropdown').append(
                 `<option value="${responseJson.data[i].latitude},${responseJson.data[i].longitude}">${responseJson.data[i].fullName}</option>`
             )
         } else{
-            //const activity = $('#js-activities').val();
-            //const state = $('#js-state').val();
-            console.log('Nothing');
-           // $('#results-list').append(`<li>Sorry, no ${activity} available in national parks in ${state}</li>`)
+           $('#results-list').append(`<li>Sorry, this state doesn't have any national parks that support that activity.</li>`)
         }
     }
 }
@@ -136,6 +135,7 @@ function findParksClicked(){
     event.preventDefault();
     $('.results-list').empty();
     $('.weather-results').empty();
+    $('#js-weather-dropdown').empty();
     const activity = $('#js-activities').val();
     const state = $('#js-state').val();
     $('#weather-form').removeClass('hidden');
@@ -144,6 +144,7 @@ function findParksClicked(){
 }
 
 function weatherDropDownClicked(){
+    store = [];
     const selected = $("#js-weather-dropdown :selected").val();
     store.push(selected);
     let stringCoord = store.toString();
@@ -153,6 +154,7 @@ function weatherDropDownClicked(){
 function getWeatherClicked(){
     $('#weather-form').submit(event => {
         event.preventDefault();
+        $('.weather-results').empty();
         weatherDropDownClicked();
         getLocationKey(store);
         getAccuweather(locationKey);

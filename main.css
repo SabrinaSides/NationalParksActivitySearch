@@ -1,8 +1,12 @@
 h1{
     color: green;
+    text-align: center;
 }
 
 img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     width: 200px;
     height: 200px;
 }
@@ -11,18 +15,31 @@ img{
     display: none;
 }
 
-.weather-results{
-    display: flex;
-    flex: row;
+
+.park-results{
+    margin: auto;
+    text-align: center;
+    padding: 30px;
 }
 
-.coord-btn {
-    background: transparent;
-    color: blue;
-    border: none;
-    outline: 0;
-    text-decoration: underline;
+ul{
+    list-style-type: none;
 }
-.coord-btn:hover {
-    color: firebrick;
+
+#js-forms{
+    margin: auto;
+    padding: 30px;
+    text-align: center;
+    /* border: 3px solid green; */
+}
+
+.form-container{
+    text-align: center;
+}
+
+.weather-results{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
 }
