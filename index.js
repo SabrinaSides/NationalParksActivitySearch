@@ -7,8 +7,8 @@ const npBaseUrl = 'https://developer.nps.gov/api/v1/parks';
 
 
 //Accuweather API
-const dailyForecast = 'http://dataservice.accuweather.com/forecasts/v1/daily/1day/';
-const weatherLocation = 'http://dataservice.accuweather.com/locations/v1/cities/geoposition/search';
+const dailyForecast = 'https://dataservice.accuweather.com/forecasts/v1/daily/1day/';
+const weatherLocation = 'https://dataservice.accuweather.com/locations/v1/cities/geoposition/search';
 const accuweatherKey = '9I5je7q85bu9l4krJjNWfcqTVDgLC67H';
 
 
@@ -123,12 +123,12 @@ function displayResults(responseJson){
             <h2>${responseJson.data[i].fullName}</h2>
             <img src='${responseJson.data[i].images[0].url}' alt='Park-image'>
             <p>${responseJson.data[i].description}</p>
-            <p>Park Coordinates: ${responseJson.data[i].latitude}, ${responseJson.data[i].longitude}<p>
+            <a href = 'https://www.google.com/maps/@${responseJson.data[i].latitude},${responseJson.data[i].longitude},15z' target='_blank'>See the park on Google Maps</a><br>
             <a href='${responseJson.data[i].url}' target='_blank'>More Park Info at NPS.gov</a>
             <hr>
             </li>`)
             $('#js-weather-dropdown').append(
-                `<option value="${responseJson.data[i].latitude},${responseJson.data[i].longitude}">${responseJson.data[i].fullName}</option>`
+                `<option value='${responseJson.data[i].latitude},${responseJson.data[i].longitude}'>${responseJson.data[i].fullName}</option>`
             )
         } else{
            $('#results-list').append(`<li>Sorry, this state doesn't have any national parks that support this activity.</li>`)
