@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>National Parks Activity Search</title>
     <link rel='stylesheet' href='main.css'>
 </head>
@@ -15,30 +15,32 @@
         <form id='js-forms'>
             <label for='js-activities'>Choose an activity:</label>
             <select id='js-activities' name='activities' required>
-                <option value="auto and atv">Auto and ATV</option>
-                <option value="biking">Biking</option>
-                <option value="birdwatching">Birdwatching</option>
-                <option value="boating">Boating</option>
-                <option value="camping">Camping</option>
-                <option value="canoeing">Canoeing</option>
-                <option value="fishing">Fishing</option>
-                <option value="geology">Geology</option>
-                <option value="guided">Guided Tours</option>
-                <option value="hiking">Hiking</option>
-                <option value="hunting">Hunting</option>
-                <option value="kayaking">Kayaking</option>
-                <option value="paddling">Paddling</option>
-                <option value="rv camping">RV Camping</option>
-                <option value="scenic driving">Scenic Driving</option>
-                <option value="scuba diving">Scuba Diving</option>
-                <option value="stargazing">Stargazing</option>
-                <option value="swimming">Swimming</option>
-                <option value="wildlife watching">Wildlife Watching</option>
+                <option disabled selected value> -- Choose an activity -- </option>
+                <option value='auto and atv'>Auto and ATV</option>
+                <option value='biking'>Biking</option>
+                <option value='birdwatching'>Birdwatching</option>
+                <option value='boating'>Boating</option>
+                <option value='camping'>Camping</option>
+                <option value='canoeing'>Canoeing</option>
+                <option value='fishing'>Fishing</option>
+                <option value='geology'>Geology</option>
+                <option value='guided'>Guided Tours</option>
+                <option value='hiking'>Hiking</option>
+                <option value='hunting'>Hunting</option>
+                <option value='kayaking'>Kayaking</option>
+                <option value='paddling'>Paddling</option>
+                <option value='rv camping'>RV Camping</option>
+                <option value='scenic driving'>Scenic Driving</option>
+                <option value='scuba diving'>Scuba Diving</option>
+                <option value='stargazing'>Stargazing</option>
+                <option value='swimming'>Swimming</option>
+                <option value='wildlife watching'>Wildlife Watching</option>
             </select>
             <br>
 
             <label for='js-state'>Choose a state:</label>
             <select id='js-state' name='state' required>
+                <option disabled selected value> -- Choose a state -- </option>
                 <option value='AL'>Alabama</option>
                 <option value='AK'>Alaska</option>
                 <option value='AZ'>Arizona</option>
@@ -91,25 +93,20 @@
                 <option value='WI'>Wisconsin</option>
                 <option value='WY'>Wyoming</option>
             </select>
-            <!--type in stateCode
-            <input type='text' id='js-state' name='state' placeholder='TX' maxlength='2' size='3' required> -->
             <br>
-            <input type="submit" value="Find Parks!">
+            <input type="submit" value="Find Parks">
         </form>
-            <br>
-            <br>
+        <!--weather form appears after 'find parks' clicked-->
         <form id='weather-form' class='hidden'>
-            <label for='js-weather-dropdown'>Check the weather at a park:</label>
+            <label for='js-weather-dropdown'>Check today's weather at:</label>
             <select id='js-weather-dropdown' name='weather-list' >
             </select>
-            <input type='submit' class='js-get-weather' value='Get Weather Forecast'> 
-        </form>
-        
+            <input type='submit' class='js-get-weather' value='Get Forecast'> 
+        </form>      
     </div>
 
     <!--Div container for weather forecast-->
-    <div class='weather-results'>
-        <h2 id='js-weather-location'></h2>
+    <div id='weather-results' class='hidden'>
         <div id='js-weather-list'>
         </div>
     </div>
@@ -122,11 +119,12 @@
 
             </ul>
         </section>
-
     </div>
 
+    <!--Go to top button-->
+    <button id="myBtn" title="Go to top">Back to Top</button>
     
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script src="index.js"></script>
+    <script src='https://code.jquery.com/jquery-3.3.1.js' integrity='sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=' crossorigin='anonymous'></script>
+    <script src='index.js'></script>
 </body>
 </html>

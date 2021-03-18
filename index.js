@@ -71,11 +71,9 @@ function getAccuweather(location){
  
 //display accuweather daily forecast
 function displayWeather(responseJson){
-    $('.weather-results').empty();
-    $('.weather-results').append(
-        `<h2>Today's Park Weather Forecast:</h2><br>`);
+    $('#weather-results').empty();
     for(let i = 0; i < responseJson.DailyForecasts.length; i++){
-        $('.weather-results').append(`
+        $('#weather-results').append(`
             <section>
                 <br>
                 <div class='forecast'>
@@ -114,19 +112,22 @@ function getNationalParks(activity, state){
 function displayResults(responseJson){
     $('#results-count').empty();
     $('#results-count').append(
-        `<h4>${responseJson.data.length} parks found: </h4>`
+        `<h4>${responseJson.data.length} parks found </h4>`
     );
     for(let i = 0; i < responseJson.data.length; i++){
         if(responseJson.data.length > 0){
+            //full park list
             $('.results-list').append(
-            `<li class='js-result-li'>
+            `<li class='js-result-li' id='result${[i]}'>
             <h2>${responseJson.data[i].fullName}</h2>
-            <img src='${responseJson.data[i].images[0].url}' alt='Park-image'>
+            <div class='park-image-container'><a href='${responseJson.data[i].url}' target='_blank' title="Click to go to park at NPS.gov"><img src='${responseJson.data[i].images[0].url}' alt='Park-image'></a></div>
             <p>${responseJson.data[i].description}</p>
             <a href = 'https://www.google.com/maps/@${responseJson.data[i].latitude},${responseJson.data[i].longitude},15z' target='_blank'>See the park on Google Maps</a><br>
             <a href='${responseJson.data[i].url}' target='_blank'>More Park Info at NPS.gov</a>
             <hr>
             </li>`)
+            
+            //weather dropdown list created
             $('#js-weather-dropdown').append(
                 `<option value='${responseJson.data[i].latitude},${responseJson.data[i].longitude}'>${responseJson.data[i].fullName}</option>`
             )
@@ -143,29 +144,46 @@ function findParksClicked(){
     $('#js-forms').submit(event => {
     event.preventDefault();
     $('.results-list').empty();
-    $('.weather-results').empty();
+    $('#weather-results').empty();
     $('#js-weather-dropdown').empty();
     const activity = $('#js-activities').val();
     const state = $('#js-state').val();
     $('#weather-form').removeClass('hidden');
+    $('#parkresult-dropdown-form').removeClass('hidden');
     getNationalParks(activity, state);
 });
 }
 
 //get weather button clicked
-function getWeatherClicked(){
+function getForecastClicked(){
     $('#weather-form').submit(event => {
         event.preventDefault();
-        $('.weather-results').empty();
+        $('#weather-results').removeClass('hidden');
+        $('#weather-results').empty();
         weatherDropDownClicked();
         getLocationKey(store);
     })
 }
 
+//Code for back to top button
+
+window.onscroll = function() {scrollFunction()};
+function scrollFunction() {
+    let mybutton = document.getElementById('myBtn');
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
 function manageParkSearch(){
     findParksClicked();
-    getWeatherClicked();
-
+    getForecastClicked();
 }
 
 //callback function
