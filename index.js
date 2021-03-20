@@ -79,7 +79,7 @@ function displayWeather(responseJson){
                     <div><p> High Temp: ${responseJson.DailyForecasts[i].Temperature.Maximum.Value}&deg F</p></div>
                     <div><p> Low Temp: ${responseJson.DailyForecasts[i].Temperature.Minimum.Value}&deg F</p></div>
                     <div><p> Condition: ${responseJson.DailyForecasts[i].Day.IconPhrase}</p></div>
-                <div class='weather-link'><a href='${responseJson.Headline.Link}' target='_blank'>Accuweather</a></div>
+                <div class='weather-link'><p>More at</p><a href='${responseJson.Headline.Link}' target='_blank'>Accuweather</a></div>
                 </div>
             </section>
         `)};
@@ -158,6 +158,7 @@ function findParksClicked(){
 function getForecastClicked(){
     $('.weather-form').submit(event => {
         event.preventDefault();
+        $('.weather-results-container').removeClass('hidden');
         weatherDropDownClicked();
         getLocationKey(store);
     })

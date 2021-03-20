@@ -97,6 +97,7 @@
             <br>
             <input type="submit" value="Find Parks" class='button'>
         </form>
+        <br>
 
         <!--weather form appears after 'find parks' clicked-->
         <form class='weather-form hidden'>
@@ -108,9 +109,12 @@
     </div>
 
     <!--Div container for weather forecast-->
-    <div id='weather-results' class='hidden'>
-        <div id='js-weather-list'>
+    <div class='weather-results-container hidden'>
+        <div id='weather-results'>
+            <div id='js-weather-list'>
+            </div>
         </div>
+       
     </div>
 
     <!-- Div container for list of search results/parks-->
@@ -125,7 +129,6 @@
 
     <!--Go to top button-->
     <button id='myBtn' title='Go to top' onclick='topFunction()'>Back to Top</button>
-
     <script src='https://code.jquery.com/jquery-3.3.1.js' integrity='sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=' crossorigin='anonymous'></script>
     <script src='index.js'></script>
     </div>
