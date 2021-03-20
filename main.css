@@ -13,7 +13,7 @@
     right:0; 
     margin: 0 8%;
     outline-style: solid;
-    outline-color: rgb(53, 46, 10);
+    outline-color: beige;
     background-color: beige;
     opacity: 0.95;
 }
@@ -52,6 +52,8 @@ hr{
 
 .hidden{
     display: none;
+    border: none;
+    background-color: beige;
 }
 
 
@@ -60,6 +62,7 @@ hr{
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin: 0 10%;
 }
 
 
@@ -94,15 +97,18 @@ ul{
 #weather-results{
     display: flex;
     flex-direction: column;
+    /* color: white; */
     padding: 5px;
     margin-top: auto;
     margin-bottom: auto;
-    margin-left: 15%;
-    margin-right: 15%;
+    margin-left: 25%;
+    margin-right: 25%;
     border: 2px solid;
-    border-color: rgb(53, 46, 10);
-    background-color: rgb(236, 217, 192);
+    border-color: rgb(219, 167, 99);
+    border-radius: 5%;
+    background-color: rgb(219, 167, 99);
     line-height: normal;
+    filter: drop-shadow(2px 2px 2px);
 }
 
 .forecast{
@@ -131,4 +137,21 @@ ul{
   
   #myBtn:hover {
     background-color: #555; /* Add a dark-grey background on hover */
+  }
+
+  a:link {
+    color: green;
+  }
+  
+  a:visited {
+    color: darkgreen;
+  }
+  
+ 
+  a:hover {
+    color: darkgrey;
+  }
+  
+  a:active {
+    color: blue;
   }
