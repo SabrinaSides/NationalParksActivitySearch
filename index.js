@@ -27,7 +27,6 @@ function weatherDropDownClicked(){
     store = [];
     const selected = $("#js-weather-dropdown :selected").val();
     store.push(selected);
-    let stringCoord = store.toString();
 }
 
 //call locationKey API--> get accuweather function nested inside (because it requires value from locationKey API)
@@ -77,10 +76,10 @@ function displayWeather(responseJson){
             <section>
                 <br>
                 <div class='forecast'>
-                    <div><h4> Max Temp: ${responseJson.DailyForecasts[i].Temperature.Maximum.Value}&deg F</h4></div>
-                    <div><h4> Min Temp: ${responseJson.DailyForecasts[i].Temperature.Minimum.Value}&deg F</h4></div>
-                    <div><h4> Conditions: ${responseJson.DailyForecasts[i].Day.IconPhrase}</h4></div>
-                    <div><a href='${responseJson.Headline.Link}' target='_blank'>More weather details available at Accuweather</a></div>
+                    <div><p> High Temp: ${responseJson.DailyForecasts[i].Temperature.Maximum.Value}&deg F</p></div>
+                    <div><p> Low Temp: ${responseJson.DailyForecasts[i].Temperature.Minimum.Value}&deg F</p></div>
+                    <div><p> Condition: ${responseJson.DailyForecasts[i].Day.IconPhrase}</p></div>
+                <div class='weather-link'><a href='${responseJson.Headline.Link}' target='_blank'>Accuweather</a></div>
                 </div>
             </section>
         `)};
@@ -110,30 +109,33 @@ function getNationalParks(activity, state){
 
 //function to display park search results
 function displayResults(responseJson){
-    $('#results-count').empty();
-    $('#results-count').append(
-        `<h4>${responseJson.data.length} parks found </h4>`
+    $('.results-count').empty();
+    $('.results-count').append(
+        `<h4>${responseJson.data.length} Parks Found </h4>`
     );
-    for(let i = 0; i < responseJson.data.length; i++){
-        if(responseJson.data.length > 0){
+    if(responseJson.data.length > 0){
+        for(let i = 0; i < responseJson.data.length; i++){
             //full park list
             $('.results-list').append(
-            `<li class='js-result-li' id='result${[i]}'>
+            `<li class='js-result-li'>
             <h2>${responseJson.data[i].fullName}</h2>
-            <div class='park-image-container'><a href='${responseJson.data[i].url}' target='_blank' title="Click to go to park at NPS.gov"><img src='${responseJson.data[i].images[0].url}' alt='Park-image'></a></div>
+            <div class='park-image'><a href='${responseJson.data[i].url}' target='_blank' title='Click to go to park at NPS.gov'><img src='${responseJson.data[i].images[0].url}' alt='Park-image' class='park-image'></a></div>
             <p>${responseJson.data[i].description}</p>
-            <a href = 'https://www.google.com/maps/@${responseJson.data[i].latitude},${responseJson.data[i].longitude},15z' target='_blank'>See the park on Google Maps</a><br>
-            <a href='${responseJson.data[i].url}' target='_blank'>More Park Info at NPS.gov</a>
+            <div class='park-links'>
+                <div class='google-maps-link'><a href = 'https://www.google.com/maps/@${responseJson.data[i].latitude},${responseJson.data[i].longitude},15z' target='_blank' title='Open park on Google Maps'><img src='images/google-maps.png' alt='Google Maps icon' class='google-logo'></a></div>
+                <div><a href='${responseJson.data[i].url}' target='_blank' title='Click to go to park at NPS.gov'><img src='images/nps-logo.png' alt='National Park Logo' class='nps-logo'></a></div>
+            </div>
             <hr>
             </li>`)
             
             //weather dropdown list created
+            $('.weather-form').removeClass('hidden');
             $('#js-weather-dropdown').append(
                 `<option value='${responseJson.data[i].latitude},${responseJson.data[i].longitude}'>${responseJson.data[i].fullName}</option>`
             )
-        } else{
-           $('#results-list').append(`<li>Sorry, this state doesn't have any national parks that support this activity.</li>`)
         }
+    }else{
+        $('.results-list').append(`<li>Sorry, this state doesn't have any national parks that support this activity.</li>`)
     }
 }
 
@@ -141,25 +143,21 @@ function displayResults(responseJson){
 
 //find parks button clicked
 function findParksClicked(){
-    $('#js-forms').submit(event => {
+    $('.activity-state-form').submit(event => {
     event.preventDefault();
     $('.results-list').empty();
     $('#weather-results').empty();
     $('#js-weather-dropdown').empty();
     const activity = $('#js-activities').val();
     const state = $('#js-state').val();
-    $('#weather-form').removeClass('hidden');
-    $('#parkresult-dropdown-form').removeClass('hidden');
     getNationalParks(activity, state);
 });
 }
 
 //get weather button clicked
 function getForecastClicked(){
-    $('#weather-form').submit(event => {
+    $('.weather-form').submit(event => {
         event.preventDefault();
-        $('#weather-results').removeClass('hidden');
-        $('#weather-results').empty();
         weatherDropDownClicked();
         getLocationKey(store);
     })

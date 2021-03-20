@@ -3,16 +3,17 @@
 <head>
     <meta charset='UTF-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
     <title>National Parks Activity Search</title>
     <link rel='stylesheet' href='main.css'>
 </head>
 <body>
     <!--Search form that always stays at top of page-->
+    <div class='container'>
     <div class='form-container'>
-        <h1>National Park Activity Search</h1>
+        <h1>National Parks Activity Search</h1>
         <p>Find which US national parks support your favorite outdoor activities</p>
-        <form id='js-forms'>
+        <form class='activity-state-form'>
             <label for='js-activities'>Choose an activity:</label>
             <select id='js-activities' name='activities' required>
                 <option disabled selected value> -- Choose an activity -- </option>
@@ -94,14 +95,15 @@
                 <option value='WY'>Wyoming</option>
             </select>
             <br>
-            <input type="submit" value="Find Parks">
+            <input type="submit" value="Find Parks" class='button'>
         </form>
+
         <!--weather form appears after 'find parks' clicked-->
-        <form id='weather-form' class='hidden'>
+        <form class='weather-form hidden'>
             <label for='js-weather-dropdown'>Check today's weather at:</label>
             <select id='js-weather-dropdown' name='weather-list' >
             </select>
-            <input type='submit' class='js-get-weather' value='Get Forecast'> 
+            <input type='submit' value='Get Forecast' class='button'> 
         </form>      
     </div>
 
@@ -113,8 +115,8 @@
 
     <!-- Div container for list of search results/parks-->
     <div class='park-results'>
-        <section id='park-section'>
-            <h2 id='results-count'></h2>
+        <section>
+            <h2 class='results-count'></h2>
             <ul class='results-list'>
 
             </ul>
@@ -122,9 +124,9 @@
     </div>
 
     <!--Go to top button-->
-    <button id="myBtn" title="Go to top">Back to Top</button>
-    
+    <button id='myBtn' title='Go to top' onclick='topFunction()'>Back to Top</button>
     <script src='https://code.jquery.com/jquery-3.3.1.js' integrity='sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=' crossorigin='anonymous'></script>
     <script src='index.js'></script>
+    </div>
 </body>
 </html>
