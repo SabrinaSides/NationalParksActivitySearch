@@ -10,7 +10,9 @@
 <a href='https://sabrinasides.github.io/NationalParksActivitySearch' target='_blank'>National Parks Activity Search</a>
 
 <h2>Screenshots</h2>
-**add images**
+<img src='screenshots/loadpage.png' alt='Load Page'>
+<img src='screenshots/park-list.png' alt='Park Result List'>
+<img src='screenshots/weather.png' alt='Weather Result'>
 
 <h2>Tech Used</h2>
 <h3>APIs</h3>
