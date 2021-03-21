@@ -74,7 +74,6 @@ function displayWeather(responseJson){
     for(let i = 0; i < responseJson.DailyForecasts.length; i++){
         $('#weather-results').append(`
             <section>
-                <br>
                 <div class='forecast'>
                     <div><p> High Temp: ${responseJson.DailyForecasts[i].Temperature.Maximum.Value}&deg F</p></div>
                     <div><p> Low Temp: ${responseJson.DailyForecasts[i].Temperature.Minimum.Value}&deg F</p></div>
@@ -112,7 +111,7 @@ function getNationalParks(activity, state){
 function displayResults(responseJson){
     $('.results-count').empty();
     $('.results-count').append(
-        `<h4>${responseJson.data.length} Parks Found </h4>`
+        `${responseJson.data.length} Parks Found`
     );
     if(responseJson.data.length > 0){
         for(let i = 0; i < responseJson.data.length; i++){
@@ -120,7 +119,7 @@ function displayResults(responseJson){
             $('.results-list').append(
             `<li class='js-result-li'>
             <h2>${responseJson.data[i].fullName}</h2>
-            <div class='park-image'><a href='${responseJson.data[i].url}' target='_blank' title='Click to go to park at NPS.gov'><img src='${responseJson.data[i].images[0].url}' alt='Park-image' class='park-image'></a></div>
+            <div class='park-image'><a href='${responseJson.data[i].url}' target='_blank' title='Click to go to park at NPS.gov'><img src='${responseJson.data[i].images[0].url}' alt='Park image' class='park-image'></a></div>
             <p>${responseJson.data[i].description}</p>
             <div class='park-links'>
                 <div class='google-maps-link'><a href = 'https://www.google.com/maps/@${responseJson.data[i].latitude},${responseJson.data[i].longitude},15z' target='_blank' title='Open park on Google Maps'><img src='images/google-maps.png' alt='Google Maps icon' class='google-logo'></a></div>
