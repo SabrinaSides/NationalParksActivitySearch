@@ -41,7 +41,7 @@ hr{
 }
 
 .park-image{
-    width: 400px;
+    width: 300px;
     height: 200px;
     display: block;
     margin-left: auto;
@@ -62,7 +62,7 @@ hr{
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin: 0 10%;
+    margin: 0 15%;
 }
 
 
@@ -95,10 +95,6 @@ ul{
 }
 
 #weather-results{
-    display: flex;
-    flex-direction: column;
-    /* color: white; */
-    padding: 5px;
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 25%;
@@ -107,17 +103,17 @@ ul{
     border-color: rgb(219, 167, 99);
     border-radius: 5%;
     background-color: rgb(219, 167, 99);
-    line-height: normal;
     filter: drop-shadow(2px 2px 2px);
+    text-align: center;
 }
 
 .forecast{
     display: flex;
     flex-direction: column;
-    align-items: center;
     text-align: center;    
 }
 
+/* Back to top button */
 #myBtn {
     display: none;
     position: fixed; 
@@ -136,7 +132,7 @@ ul{
   }
   
   #myBtn:hover {
-    background-color: #555; /* Add a dark-grey background on hover */
+    background-color: #555;
   }
 
   a:link {
@@ -154,4 +150,30 @@ ul{
   
   a:active {
     color: blue;
+  }
+
+  
+  /* Desktop Compatibility */
+  @media all and (min-width: 600px) {
+
+    header h1 {
+        font-size: 48px;      
+        letter-spacing: 8px;
+    }
+
+    .park-image{
+        width: 400px;
+        height: 200px;
+    }
+
+    .park-results{
+        margin: 0 10%;
+    }
+
+    .forecast{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;    
+    }
   }
