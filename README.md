@@ -1,4 +1,4 @@
-<h1>National Park Activity Search</h1>
+<h1>National Parks Activity Search</h1>
 
 <h2>Summary</h2>
 
@@ -7,7 +7,7 @@
 <p>After selecting an activity and state, the user sees a list of national parks that match their search criteria (provided by the National Parks API). Each park result shows the park name, a picture, description, Google Maps link and NPS.gov link. The user can also view the day's weather forecast for each resulted park (provided by the Accuweather APIs) at the top of the page.</p>
 
 <h2>See It Live</h2>
-<a href='https://sabrinasides.github.io/NationalParkActivitySearch' target='_blank'>National Park Activity Search</a>
+<a href='https://sabrinasides.github.io/NationalParksActivitySearch' target='_blank'>National Parks Activity Search</a>
 
 <h2>Screenshots</h2>
 **add images**
