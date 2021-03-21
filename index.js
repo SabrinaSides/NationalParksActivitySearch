@@ -79,8 +79,9 @@ function displayWeather(responseJson){
                     <div><p> High Temp: ${responseJson.DailyForecasts[i].Temperature.Maximum.Value}&deg F</p></div>
                     <div><p> Low Temp: ${responseJson.DailyForecasts[i].Temperature.Minimum.Value}&deg F</p></div>
                     <div><p> Condition: ${responseJson.DailyForecasts[i].Day.IconPhrase}</p></div>
-                <div class='weather-link'><p>More at</p><a href='${responseJson.Headline.Link}' target='_blank'>Accuweather</a></div>
+    
                 </div>
+                <a href='${responseJson.Headline.Link}' target='_blank'>More at Accuweather</a>
             </section>
         `)};
 }
