@@ -146,6 +146,7 @@ function findParksClicked(){
     $('.activity-state-form').submit(event => {
     event.preventDefault();
     $('.results-list').empty();
+    $('.weather-results-container').addClass('hidden');
     $('#weather-results').empty();
     $('#js-weather-dropdown').empty();
     const activity = $('#js-activities').val();
