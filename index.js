@@ -74,6 +74,7 @@ function displayWeather(responseJson){
     for(let i = 0; i < responseJson.DailyForecasts.length; i++){
         $('#weather-results').append(`
             <section>
+
                 <div id='forecast'>
                     <div><h4>High Temp:</h4><p>${responseJson.DailyForecasts[i].Temperature.Maximum.Value}&degF</p></div>
                     <div><h4>Low Temp:</h4><p>${responseJson.DailyForecasts[i].Temperature.Minimum.Value}&degF</p></div>
