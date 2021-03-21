@@ -18,9 +18,9 @@
     opacity: 0.95;
 }
 
-body {
-    background: url('images/forest.jpg') no-repeat center center;
-    background-attachment:scroll;
+
+body{
+    background: url('images/forest.jpg') no-repeat center center fixed;
     background-size: cover;
     background-color: beige;
    }
@@ -124,7 +124,7 @@ ul{
     z-index: 99; 
     border: none; 
     outline: none; 
-    background-color: rgb(1, 68, 1); 
+    background-color: rgb(2, 95, 2); 
     color: white;
     cursor: pointer; 
     padding: 10px; 
@@ -138,7 +138,7 @@ ul{
   }
 
   a:link {
-    color: green;
+    color: darkgreen;
   }
   
   a:visited {
@@ -147,7 +147,7 @@ ul{
   
  
   a:hover {
-    color: darkgrey;
+    color: black;
   }
   
   a:active {
@@ -158,9 +158,8 @@ ul{
   /* Desktop Compatibility */
   @media all and (min-width: 600px) {
 
-    header h1 {
+    h1 {
         font-size: 48px;      
-        letter-spacing: 8px;
     }
 
     .park-image{
@@ -178,10 +177,4 @@ ul{
         justify-content: center;
         text-align: center;    
     }
-
-    body {
-        background: url('images/forest.jpg') no-repeat center center fixed;
-        background-size: cover;
-        background-color: beige;
-       }
   }
