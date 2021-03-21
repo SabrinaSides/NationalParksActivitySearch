@@ -105,14 +105,15 @@ ul{
     border-radius: 5%;
     background-color: rgb(219, 167, 99);
     filter: drop-shadow(2px 2px 2px);
-    text-align: center;
-    padding-bottom: 15px;   
+    text-align: center; 
 }
 
-.forecast{
+#forecast{
     display: flex;
     flex-direction: column;
     text-align: center; 
+    justify-content: center;
+    padding: 5px;
 }
 
 /* Back to top button */
@@ -171,10 +172,10 @@ ul{
         margin: 0 10%;
     }
 
-    .forecast{
+    #forecast{
         display: flex;
         flex-direction: row;
-        justify-content: center;
-        text-align: center;    
+        text-align: center; 
+        justify-content: space-evenly;
     }
   }

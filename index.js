@@ -74,11 +74,10 @@ function displayWeather(responseJson){
     for(let i = 0; i < responseJson.DailyForecasts.length; i++){
         $('#weather-results').append(`
             <section>
-                <div class='forecast'>
-                    <div><p> High Temp: ${responseJson.DailyForecasts[i].Temperature.Maximum.Value}&deg F</p></div>
-                    <div><p> Low Temp: ${responseJson.DailyForecasts[i].Temperature.Minimum.Value}&deg F</p></div>
-                    <div><p> Condition: ${responseJson.DailyForecasts[i].Day.IconPhrase}</p></div>
-    
+                <div id='forecast'>
+                    <div><h4>High Temp:</h4><p>${responseJson.DailyForecasts[i].Temperature.Maximum.Value}&degF</p></div>
+                    <div><h4>Low Temp:</h4><p>${responseJson.DailyForecasts[i].Temperature.Minimum.Value}&degF</p></div>
+                    <div><h4>Condition:</h4><p>${responseJson.DailyForecasts[i].Day.IconPhrase}</p></div>
                 </div>
                 <a href='${responseJson.Headline.Link}' target='_blank'>More at Accuweather</a>
             </section>
