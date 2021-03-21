@@ -14,7 +14,7 @@
         <h1>National Parks Activity Search</h1>
         <p>Find which US national parks support your favorite outdoor activities</p>
         <form class='activity-state-form'>
-            <label for='js-activities'>Choose an activity:</label>
+            <label for='js-activities'>Choose activity:</label>
             <select id='js-activities' name='activities' required>
                 <option disabled selected value> -- Choose an activity -- </option>
                 <option value='auto and atv'>Auto and ATV</option>
@@ -39,7 +39,7 @@
             </select>
             <br>
 
-            <label for='js-state'>Choose a state:</label>
+            <label for='js-state'>Choose state:</label>
             <select id='js-state' name='state' required>
                 <option disabled selected value> -- Choose a state -- </option>
                 <option value='AL'>Alabama</option>
@@ -109,23 +109,22 @@
     </div>
 
     <!--Div container for weather forecast-->
-    <div class='weather-results-container hidden'>
+    <section class='weather-results-container hidden'>
         <div id='weather-results'>
             <div id='js-weather-list'>
             </div>
         </div>
        
-    </div>
+    </section>
 
     <!-- Div container for list of search results/parks-->
-    <div class='park-results'>
-        <section>
+    <section class='park-results'>
             <h2 class='results-count'></h2>
             <ul class='results-list'>
 
             </ul>
-        </section>
-    </div>
+
+    </section>
 
     <!--Go to top button-->
     <button id='myBtn' title='Go to top' onclick='topFunction()'>Back to Top</button>
